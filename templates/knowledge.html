@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUMP-GUARD AI | Knowledge Base & Rules</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="header-left">
+            <div class="brand-logo">
+                <i class="fa-solid fa-microchip-gear"></i>
+                <div class="brand-text">
+                    <span class="logo-title">PUMP-GUARD <strong>KBS</strong></span>
+                    <span class="logo-sub">Knowledge Representation & Ontological Modeling</span>
+                </div>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="{{ url_for('home') }}" class="nav-item"><i class="fa-solid fa-gauge-high"></i> Live Diagnostics</a>
+                <a href="{{ url_for('knowledge_page') }}" class="nav-item active"><i class="fa-solid fa-diagram-project"></i> Knowledge Base</a>
+                <a href="{{ url_for('analytics_page') }}" class="nav-item"><i class="fa-solid fa-chart-line"></i> Analytics & Logs</a>
+            </nav>
+        </div>
+
+        <div class="header-right">
+            <div class="telemetry-badge">
+                <i class="fa-solid fa-book-bookmark"></i>
+                <span>Ontology Model v1.2</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-container">
+        
+        <!-- Header Banner -->
+        <div class="section-banner">
+            <div>
+                <span class="badge-sub">CLO 1: Knowledge Representation Formalism</span>
+                <h2>Centrifugal Pump Failure Ontology & Rule Inventory</h2>
+                <p>Heterogeneous domain knowledge extracted from manufacturer maintenance manuals, ISO 10816 vibration standards, and empirical engineering rules.</p>
+            </div>
+        </div>
+
+        <!-- 1. Equipment Ontological Decomposition (Hierarchy Cards) -->
+        <h3 class="section-title"><i class="fa-solid fa-sitemap text-cyan"></i> Equipment Structural Hierarchy</h3>
+        <div class="ontology-grid">
+            <div class="ontology-card">
+                <div class="ontology-header">
+                    <i class="fa-solid fa-circle-notch text-primary"></i>
+                    <h4>Shaft Bearings</h4>
+                </div>
+                <p>Support radial and axial shaft rotor dynamics with precision tolerances.</p>
+                <div class="ontology-meta">
+                    <span><strong>Failure Modes:</strong> Raceway spalling, cage fracture, dry lubrication</span>
+                    <span><strong>Critical Sensor:</strong> Vibration velocity > 6.5 mm/s, Temp > 75°C</span>
+                </div>
+            </div>
+
+            <div class="ontology-card">
+                <div class="ontology-header">
+                    <i class="fa-solid fa-fan text-primary"></i>
+                    <h4>Closed Impeller</h4>
+                </div>
+                <p>Imparts centrifugal velocity to liquid inside the casing volute chamber.</p>
+                <div class="ontology-meta">
+                    <span><strong>Failure Modes:</strong> Micro-jet cavitation pitting, vane erosion, debris clogging</span>
+                    <span><strong>Critical Indicator:</strong> Popping acoustics, suction head drop</span>
+                </div>
+            </div>
+
+            <div class="ontology-card">
+                <div class="ontology-header">
+                    <i class="fa-solid fa-droplet-slash text-primary"></i>
+                    <h4>Mechanical Seal</h4>
+                </div>
+                <p>Provides fluid containment barrier preventing hazardous fluid egress along the shaft.</p>
+                <div class="ontology-meta">
+                    <span><strong>Failure Modes:</strong> Carbon face cracking, secondary O-ring hardening</span>
+                    <span><strong>Critical Indicator:</strong> Continuous fluid leakage, gland temperature</span>
+                </div>
+            </div>
+
+            <div class="ontology-card">
+                <div class="ontology-header">
+                    <i class="fa-solid fa-link text-primary"></i>
+                    <h4>Flexible Coupling</h4>
+                </div>
+                <p>Transmits mechanical motor torque to the pump shaft while absorbing misalignment.</p>
+                <div class="ontology-meta">
+                    <span><strong>Failure Modes:</strong> Angular misalignment, elastomeric spider shearing</span>
+                    <span><strong>Critical Sensor:</strong> Elevated 1X/2X rotational frequency vibration</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Active Production Rules Table -->
+        <h3 class="section-title" style="margin-top: 35px;"><i class="fa-solid fa-list-check text-amber"></i> Production Rules (IF-THEN Expert Rules)</h3>
+        <div class="table-card">
+            <table class="rules-table">
+                <thead>
+                    <tr>
+                        <th>Rule ID</th>
+                        <th>Target Subsystem</th>
+                        <th>IF Conditions (Antecedents)</th>
+                        <th>THEN Diagnosis (Consequent)</th>
+                        <th>Base CF</th>
+                        <th>Default Protocol</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>RULE_01</code></td>
+                        <td>Shaft Bearings</td>
+                        <td>High Vibration (> 6.5 mm/s) + Temp (> 75°C) + Metallic Grinding Noise</td>
+                        <td><span class="tag-status danger">Bearing Degradation</span></td>
+                        <td><strong>0.90</strong></td>
+                        <td>Emergency stop & replace ball bearings</td>
+                    </tr>
+                    <tr>
+                        <td><code>RULE_02</code></td>
+                        <td>Impeller</td>
+                        <td>Gravel / Popping Sound + Reduced Flow Rate</td>
+                        <td><span class="tag-status warning">Hydraulic Cavitation</span></td>
+                        <td><strong>0.88</strong></td>
+                        <td>Open suction valve, clean basket strainer</td>
+                    </tr>
+                    <tr>
+                        <td><code>RULE_03</code></td>
+                        <td>Mechanical Seal</td>
+                        <td>Fluid Leakage at Gland + Elevated Casing Heat</td>
+                        <td><span class="tag-status danger">Seal Face Breakdown</span></td>
+                        <td><strong>0.85</strong></td>
+                        <td>Isolate lines & install pre-tested seal cartridge</td>
+                    </tr>
+                    <tr>
+                        <td><code>RULE_04</code></td>
+                        <td>Coupling</td>
+                        <td>Continuous Vibration (> 5.0 mm/s) without grinding acoustics</td>
+                        <td><span class="tag-status info">Shaft Misalignment</span></td>
+                        <td><strong>0.82</strong></td>
+                        <td>Re-align centerline with 2-axis dial indicators</td>
+                    </tr>
+                    <tr>
+                        <td><code>RULE_05</code></td>
+                        <td>Suction Chamber</td>
+                        <td>Discharge Flow Drop without excessive vibration</td>
+                        <td><span class="tag-status info">Suction Clogging</span></td>
+                        <td><strong>0.78</strong></td>
+                        <td>Pressure backwash & clean suction mesh basket</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <footer class="app-footer">
+        <div class="footer-inner">
+            <span>Knowledge-Based Systems (CT-359) &bull; Department of CS & IT</span>
+            <span>Centrifugal Equipment KBS Architecture</span>
+        </div>
+    </footer>
+
+</body>
+</html>

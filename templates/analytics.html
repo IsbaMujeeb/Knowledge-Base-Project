@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUMP-GUARD AI | Diagnostic History & Analytics</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="header-left">
+            <div class="brand-logo">
+                <i class="fa-solid fa-microchip-gear"></i>
+                <div class="brand-text">
+                    <span class="logo-title">PUMP-GUARD <strong>KBS</strong></span>
+                    <span class="logo-sub">Machine Health Records & Telemetry Logs</span>
+                </div>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="{{ url_for('home') }}" class="nav-item"><i class="fa-solid fa-gauge-high"></i> Live Diagnostics</a>
+                <a href="{{ url_for('knowledge_page') }}" class="nav-item"><i class="fa-solid fa-diagram-project"></i> Knowledge Base</a>
+                <a href="{{ url_for('analytics_page') }}" class="nav-item active"><i class="fa-solid fa-chart-line"></i> Analytics & Logs</a>
+            </nav>
+        </div>
+
+        <div class="header-right">
+            <div class="telemetry-badge">
+                <i class="fa-solid fa-database"></i>
+                <span>Database: Connected</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-container">
+        
+        <div class="section-banner">
+            <div>
+                <span class="badge-sub">Asset Operational Audit</span>
+                <h2>Historical Machine Diagnostics & Fleet Health</h2>
+                <p>Live audit trail of previously executed KBS rule inferences and machine maintenance records.</p>
+            </div>
+        </div>
+
+        <!-- Metric Cards -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-icon text-cyan"><i class="fa-solid fa-heart-pulse"></i></div>
+                <div class="metric-info">
+                    <span class="metric-label">Asset Health Score</span>
+                    <h3>{{ health_score }} / 100</h3>
+                    <small class="text-emerald"><i class="fa-solid fa-check"></i> Live Computed Status</small>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-icon text-primary"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                <div class="metric-info">
+                    <span class="metric-label">Total Inferences Logged</span>
+                    <h3>{{ total_logs }} Records</h3>
+                    <small class="text-emerald"><i class="fa-solid fa-circle-check"></i> Verified KBS Sessions</small>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-icon text-rose"><i class="fa-solid fa-wrench"></i></div>
+                <div class="metric-info">
+                    <span class="metric-label">Target Asset</span>
+                    <h3>Asset #P-104</h3>
+                    <small class="text-muted">Centrifugal Industrial Pump</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logs Table -->
+        <h3 class="section-title" style="margin-top: 35px;"><i class="fa-solid fa-clock-rotate-left text-cyan"></i> Live Audit Logs Table</h3>
+        <div class="table-card">
+            <table class="rules-table">
+                <thead>
+                    <tr>
+                        <th>Log ID</th>
+                        <th>Timestamp</th>
+                        <th>Asset Node</th>
+                        <th>Diagnosed Condition</th>
+                        <th>Certainty Factor</th>
+                        <th>Prescribed Action</th>
+                        <th>Severity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if logs %}
+                        {% for log in logs %}
+                        <tr>
+                            <td><code>{{ log.id }}</code></td>
+                            <td>{{ log.timestamp }}</td>
+                            <td>{{ log.asset }}</td>
+                            <td>{{ log.fault }}</td>
+                            <td><strong>{{ log.confidence }}</strong></td>
+                            <td>{{ log.action }}</td>
+                            <td>
+                                {% if 'Critical' in log.severity %}
+                                    <span class="tag-status danger">Critical</span>
+                                {% else %}
+                                    <span class="tag-status info">Standard</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="7" style="text-align: center; padding: 30px; color: var(--text-muted);">
+                                No records yet. Go to <strong>Live Diagnostics</strong> and run a diagnosis!
+                            </td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <footer class="app-footer">
+        <div class="footer-inner">
+            <span>Knowledge-Based Systems (CT-359) &bull; Department of CS & IT</span>
+            <span>Centrifugal Equipment KBS Architecture</span>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+[
+    {
+        "id": "#LOG-1004",
+        "timestamp": "17 Oct, 10:59 PM",
+        "asset": "P-104 (Bearings)",
+        "fault": "Shaft Bearing Degradation & Lubrication Breakdown",
+        "confidence": "54%",
+        "action": "Throttle motor load to 60%, engage cooli...",
+        "severity": "Critical Severity"
+    },
+    {
+        "id": "#LOG-1003",
+        "timestamp": "17 Oct, 10:48 PM",
+        "asset": "P-104 (Seal)",
+        "fault": "Mechanical Seal Breakdown & Packing Breach",
+        "confidence": "40%",
+        "action": "Divert flow to secondary standby pump un...",
+        "severity": "High Hazard"
+    },
+    {
+        "id": "#LOG-1002",
+        "timestamp": "17 Oct, 10:48 PM",
+        "asset": "P-104 (Bearings)",
+        "fault": "Shaft Bearing Degradation & Lubrication Breakdown",
+        "confidence": "36%",
+        "action": "Throttle motor load to 60%, engage cooli...",
+        "severity": "Critical Severity"
+    },
+    {
+        "id": "#LOG-1001",
+        "timestamp": "17 Oct, 10:47 PM",
+        "asset": "P-104 (Bearings)",
+        "fault": "Shaft Bearing Degradation & Lubrication Breakdown",
+        "confidence": "36%",
+        "action": "Immediate emergency shutdown. Isolate pu...",
+        "severity": "Critical Severity"
+    }
+]
